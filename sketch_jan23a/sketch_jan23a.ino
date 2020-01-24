@@ -26,18 +26,23 @@ void setup() {
 
 
 void printValues(){
-  Serial.print("Temperature:");
-  Serial.println(temperature);
-  
-  
-  Serial.print("Humidity:");
-  Serial.println(humidity);
-  
-  Serial.print("Gas value:");
-  Serial.println(gasvalue);
-  
-  Serial.print("Flame value:");
-  Serial.println(flamevalue);
+  Serial.flush();
+  Serial.print("--start--");
+
+  Serial.print(";t:");
+  Serial.print(temperature);
+
+  Serial.print(";h:");
+  Serial.print(humidity);
+
+  Serial.print(";g:");
+  Serial.print(gasvalue);
+
+  Serial.print(";f:");
+  Serial.print(flamevalue);
+
+  Serial.println(";--end--");
+  Serial.flush();
 }
 
 void switches(){

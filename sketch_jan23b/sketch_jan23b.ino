@@ -2,10 +2,10 @@
 #include <NewPing.h>        //Ultrasonic sensor function library. You must install this library
 
 //our L298N control pins
-const int LeftMotorForward = 7;
-const int LeftMotorBackward = 6;
-const int RightMotorForward = 4;
-const int RightMotorBackward = 5;
+const int LeftMotorForward = 6;
+const int LeftMotorBackward = 7;
+const int RightMotorForward = 5;
+const int RightMotorBackward = 4;
 
 //sensor pins
 #define trig_pin A1 //analog input 1
@@ -17,6 +17,7 @@ int distance = 100;
 
 const int buzzer = 2;
 const int IRpin = 9;
+const int IRpin2 = 3;
 const int carPin = 12;
 const int ledPin = 8;
 const int ledPinout=11;
@@ -34,6 +35,7 @@ void setup() {
   pinMode(ledPinout, OUTPUT);
   pinMode(buzzer, OUTPUT);
   pinMode(IRpin, INPUT);
+  pinMode(IRpin2, INPUT);
   pinMode(carPin, INPUT);
   pinMode(ledPin, INPUT);
 
@@ -73,7 +75,7 @@ void loop() {
   int distanceLeft = 0;
   int maxdistance;
 
-  if (digitalRead(IRpin) == 1) {
+  if (digitalRead(IRpin) || digitalRead(IRpin2)) {
     digitalWrite(buzzer, HIGH);
     Serial.println("Edge detected, turning car by 180 degrees");
     moveStop();
